@@ -10,7 +10,14 @@ mediasoup:
     listenIps:
       - ip: "{{ bbb_bind_ip4 }}"
         announcedIp: "{{ bbb_public_ip4 }}"
+{% if bbb_bind_ip6 %}
+      - ip: "{{ bbb_bind_ip6 }}"
+        announcedIp: "{{ bbb_public_ip6 }}"
+{% endif %}
   plainRtp:
     listenIp:
       ip: "{{ bbb_bind_ip4 }}"
       announcedIp: "{{ bbb_public_ip4 }}"
+{% if bbb_config_webrtc_sfu %}
+{{ bbb_config_webrtc_sfu | to_nice_yaml }}
+{% endif %}
